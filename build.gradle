@@ -8,18 +8,23 @@ buildscript {
     ext.constraintlayout_version='1.0.2'
 
     repositories {
-        jcenter()
+        mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.android.tools.build:gradle:7.4.2'
     }
 }
 
 allprojects {
     repositories {
-        jcenter()
+        flatDir {
+            dirs rootProject.file('libs')
+        }
+        mavenCentral()
         google()
+        maven { url 'https://jitpack.io' }
+        jcenter()
     }
 }
 
@@ -28,7 +33,7 @@ task clean(type: Delete) {
 }
 
 ext {
-    compileSdkVersion = 25       // depending on your sdk version
-    buildToolsVersion = "25.0.2" // depending on your build tools version
-    targetSdkVersion = 25       // depending on your sdk version
+    compileSdkVersion = 33
+    buildToolsVersion = "33.0.1"
+    targetSdkVersion = 33
 }
